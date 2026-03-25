@@ -1,52 +1,167 @@
-<!DOCTYPE html>
-‎<html>
+‎<!DOCTYPE html>
+‎<html lang="en">
 ‎<head>
-‎  <title>Minecraft Tier List</title>
-‎  <style>
-‎    body { font-family: Arial; background: #222; color: white; }
-‎    .tier { display: flex; margin: 10px; }
-‎    .label { width: 80px; font-weight: bold; padding: 10px; }
-‎    .items { display: flex; gap: 10px; flex-wrap: wrap; }
-‎    img { width: 60px; height: 60px; cursor: grab; }
-‎  </style>
+‎<meta charset="UTF-8">
+‎<meta name="viewport" content="width=device-width, initial-scale=1.0">
+‎<title>Minecraft India Tier List</title>
+‎
+‎<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+‎
+‎<style>
+‎body {
+‎  margin: 0;
+‎  font-family: 'Poppins', sans-serif;
+‎  background: linear-gradient(180deg, #0b1220, #0a0f1a);
+‎  color: white;
+‎}
+‎
+‎/* Top Tabs */
+‎.tabs {
+‎  display: flex;
+‎  gap: 10px;
+‎  padding: 10px;
+‎}
+‎
+‎.tab {
+‎  flex: 1;
+‎  text-align: center;
+‎  padding: 10px;
+‎  border-radius: 15px;
+‎  background: #111827;
+‎  opacity: 0.6;
+‎}
+‎
+‎.tab.active {
+‎  opacity: 1;
+‎  border-bottom: 3px solid #60a5fa;
+‎}
+‎
+‎/* Card */
+‎.card {
+‎  background: #111827;
+‎  border-radius: 20px;
+‎  margin: 15px;
+‎  padding: 15px;
+‎  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+‎}
+‎
+‎/* Player Row */
+‎.player {
+‎  display: flex;
+‎  align-items: center;
+‎  gap: 10px;
+‎}
+‎
+‎/* Rank */
+‎.rank {
+‎  background: linear-gradient(135deg, #facc15, #f59e0b);
+‎  color: black;
+‎  font-weight: bold;
+‎  padding: 12px;
+‎  border-radius: 12px;
+‎}
+‎
+‎/* Avatar */
+‎.player img {
+‎  width: 60px;
+‎  border-radius: 10px;
+‎}
+‎
+‎/* Name */
+‎.name {
+‎  font-size: 18px;
+‎  font-weight: 600;
+‎}
+‎
+‎/* Badge */
+‎.badge {
+‎  background: #7f1d1d;
+‎  color: #f87171;
+‎  padding: 4px 10px;
+‎  border-radius: 10px;
+‎  font-size: 12px;
+‎}
+‎
+‎/* Tier Section */
+‎.tiers {
+‎  display: flex;
+‎  flex-wrap: wrap;
+‎  gap: 10px;
+‎  margin-top: 15px;
+‎}
+‎
+‎/* Tier Circle */
+‎.tier {
+‎  width: 45px;
+‎  height: 45px;
+‎  border-radius: 50%;
+‎  background: #1f2937;
+‎  display: flex;
+‎  align-items: center;
+‎  justify-content: center;
+‎  border: 2px solid #facc15;
+‎  font-size: 12px;
+‎  font-weight: bold;
+‎}
+‎
+‎/* Hover Glow */
+‎.card:hover {
+‎  box-shadow: 0 0 30px rgba(255,255,255,0.1);
+‎}
+‎</style>
+‎
 ‎</head>
 ‎<body>
 ‎
-‎<h1>Minecraft Tier List</h1>
-‎
-‎<div class="tier" style="background:red">
-‎  <div class="label">S</div>
-‎  <div class="items" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+‎<!-- Tabs -->
+‎<div class="tabs">
+‎  <div class="tab active">🏆 Overall</div>
+‎  <div class="tab">⚔️ LTMs</div>
+‎  <div class="tab">🧪 Vanilla</div>
 ‎</div>
 ‎
-‎<div class="tier" style="background:orange">
-‎  <div class="label">A</div>
-‎  <div class="items" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+‎<!-- Player 1 -->
+‎<div class="card">
+‎  <div class="player">
+‎    <div class="rank">1</div>
+‎    <img src="https://mc-heads.net/avatar/Steve">
+‎    <div>
+‎      <div class="name">Marlo</div>
+‎      <div class="badge">NA</div>
+‎    </div>
+‎  </div>
+‎
+‎  <div class="tiers">
+‎    <div class="tier">HT1</div>
+‎    <div class="tier">HT1</div>
+‎    <div class="tier">LT1</div>
+‎    <div class="tier">HT1</div>
+‎    <div class="tier">HT1</div>
+‎    <div class="tier">HT1</div>
+‎  </div>
 ‎</div>
 ‎
-‎<div class="tier" style="background:yellow">
-‎  <div class="label">B</div>
-‎  <div class="items" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+‎<!-- Player 2 -->
+‎<div class="card">
+‎  <div class="player">
+‎    <div class="rank">2</div>
+‎    <img src="https://mc-heads.net/avatar/Alex">
+‎    <div>
+‎      <div class="name">ItzReal</div>
+‎      <div class="badge">NA</div>
+‎    </div>
+‎  </div>
+‎
+‎  <div class="tiers">
+‎    <div class="tier">HT3</div>
+‎    <div class="tier">HT1</div>
+‎    <div class="tier">HT1</div>
+‎    <div class="tier">HT1</div>
+‎    <div class="tier">HT1</div>
+‎    <div class="tier">LT2</div>
+‎  </div>
 ‎</div>
-‎
-‎<hr>
-‎
-‎<h3>Drag items:</h3>
-‎
-‎<img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/4a/Diamond.png" draggable="true" ondragstart="drag(event)" id="diamond">
-‎<img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/5c/Netherite_Ingot.png" draggable="true" ondragstart="drag(event)" id="netherite">
-‎
-‎<script>
-‎function allowDrop(ev) { ev.preventDefault(); }
-‎
-‎function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
-‎
-‎function drop(ev) {
-‎  ev.preventDefault();
-‎  var data = ev.dataTransfer.getData("text");
-‎  ev.target.appendChild(document.getElementById(data));
-‎}
-‎</script>
 ‎
 ‎</body>
 ‎</html>
+‎
