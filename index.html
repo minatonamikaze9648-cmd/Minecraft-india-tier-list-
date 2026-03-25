@@ -1,52 +1,52 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Minecraft Tier List</title>
-  <style>
-    body { font-family: Arial; background: #222; color: white; }
-    .tier { display: flex; margin: 10px; }
-    .label { width: 80px; font-weight: bold; padding: 10px; }
-    .items { display: flex; gap: 10px; flex-wrap: wrap; }
-    img { width: 60px; height: 60px; cursor: grab; }
-  </style>
-</head>
-<body>
-
-<h1>Minecraft Tier List</h1>
-
-<div class="tier" style="background:red">
-  <div class="label">S</div>
-  <div class="items" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-</div>
-
-<div class="tier" style="background:orange">
-  <div class="label">A</div>
-  <div class="items" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-</div>
-
-<div class="tier" style="background:yellow">
-  <div class="label">B</div>
-  <div class="items" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
-</div>
-
-<hr>
-
-<h3>Drag items:</h3>
-
-<img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/4a/Diamond.png" draggable="true" ondragstart="drag(event)" id="diamond">
-<img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/5c/Netherite_Ingot.png" draggable="true" ondragstart="drag(event)" id="netherite">
-
-<script>
-function allowDrop(ev) { ev.preventDefault(); }
-
-function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
-
-function drop(ev) {
-  ev.preventDefault();
-  var data = ev.dataTransfer.getData("text");
-  ev.target.appendChild(document.getElementById(data));
-}
-</script>
-
-</body>
-</html>
+‎<html>
+‎<head>
+‎  <title>Minecraft Tier List</title>
+‎  <style>
+‎    body { font-family: Arial; background: #222; color: white; }
+‎    .tier { display: flex; margin: 10px; }
+‎    .label { width: 80px; font-weight: bold; padding: 10px; }
+‎    .items { display: flex; gap: 10px; flex-wrap: wrap; }
+‎    img { width: 60px; height: 60px; cursor: grab; }
+‎  </style>
+‎</head>
+‎<body>
+‎
+‎<h1>Minecraft Tier List</h1>
+‎
+‎<div class="tier" style="background:red">
+‎  <div class="label">S</div>
+‎  <div class="items" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+‎</div>
+‎
+‎<div class="tier" style="background:orange">
+‎  <div class="label">A</div>
+‎  <div class="items" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+‎</div>
+‎
+‎<div class="tier" style="background:yellow">
+‎  <div class="label">B</div>
+‎  <div class="items" ondrop="drop(event)" ondragover="allowDrop(event)"></div>
+‎</div>
+‎
+‎<hr>
+‎
+‎<h3>Drag items:</h3>
+‎
+‎<img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/4/4a/Diamond.png" draggable="true" ondragstart="drag(event)" id="diamond">
+‎<img src="https://static.wikia.nocookie.net/minecraft_gamepedia/images/5/5c/Netherite_Ingot.png" draggable="true" ondragstart="drag(event)" id="netherite">
+‎
+‎<script>
+‎function allowDrop(ev) { ev.preventDefault(); }
+‎
+‎function drag(ev) { ev.dataTransfer.setData("text", ev.target.id); }
+‎
+‎function drop(ev) {
+‎  ev.preventDefault();
+‎  var data = ev.dataTransfer.getData("text");
+‎  ev.target.appendChild(document.getElementById(data));
+‎}
+‎</script>
+‎
+‎</body>
+‎</html>
