@@ -1,3 +1,4 @@
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +16,7 @@ body {
   color: white;
 }
 
-/* 🔥 HEADER (LOGO + SEARCH) */
+/*  HEADER */
 .header {
   display: flex;
   align-items: center;
@@ -46,7 +47,7 @@ body {
   color: white;
 }
 
-/* 🔥 MENU */
+/*  MENU */
 .menu {
   display: flex;
   overflow-x: auto;
@@ -136,13 +137,11 @@ body {
 
 .tier img { width: 18px; }
 .tier span { font-size: 10px; }
-
 </style>
 </head>
 
 <body>
 
-<!-- 🔥 HEADER -->
 <div class="header">
   <div class="logo">MCTIERS</div>
   <div class="search">
@@ -150,14 +149,13 @@ body {
   </div>
 </div>
 
-<!-- 🔥 MENU -->
 <div class="menu" id="menu"></div>
 
 <div id="app"></div>
 
 <script>
 
-// 🔥 MENU
+//  MENU
 const menuItems = [
   {name:"Vanilla", icon:"https://cdn-icons-png.flaticon.com/512/1040/1040230.png"},
   {name:"UHC", icon:"https://cdn-icons-png.flaticon.com/512/833/833472.png"},
@@ -178,10 +176,17 @@ menuItems.forEach((item, index) => {
   if(index === 0) div.classList.add("active");
 
   div.innerHTML = `<img src="${item.icon}"><span>${item.name}</span>`;
+
+  //  MENU CLICK FIX
+  div.addEventListener("click", () => {
+    document.querySelectorAll(".menu-item").forEach(el => el.classList.remove("active"));
+    div.classList.add("active");
+  });
+
   menu.appendChild(div);
 });
 
-// 🔥 NAMES
+//  NAMES
 let customNames = {
   1: "PS777GAMING",
   2: "DEATH SCAR",
@@ -209,7 +214,7 @@ for (let i = 1; i <= 100; i++) {
 
 const app = document.getElementById("app");
 
-// 🔥 RENDER FUNCTION
+//  RENDER FUNCTION
 function render(list) {
   app.innerHTML = "";
   
@@ -245,7 +250,7 @@ function render(list) {
   });
 }
 
-// 🔥 SEARCH FILTER
+//  SEARCH FIX
 document.getElementById("searchInput").addEventListener("input", (e) => {
   const value = e.target.value.toLowerCase();
   const filtered = players.filter(p => p.name.toLowerCase().includes(value));
@@ -259,3 +264,4 @@ render(players);
 
 </body>
 </html>
+```
