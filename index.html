@@ -15,6 +15,40 @@ body {
   color: white;
 }
 
+/*  TOP MENU */
+.menu {
+  display: flex;
+  overflow-x: auto;
+  gap: 10px;
+  padding: 12px;
+}
+
+.menu-item {
+  min-width: 90px;
+  text-align: center;
+  background: #0f172a;
+  border-radius: 12px;
+  padding: 10px;
+  transition: 0.3s;
+  border: 2px solid transparent;
+}
+
+.menu-item img {
+  width: 28px;
+  margin-bottom: 5px;
+}
+
+.menu-item span {
+  font-size: 12px;
+  color: #cbd5f5;
+}
+
+.menu-item.active {
+  border: 2px solid gold;
+  box-shadow: 0 0 10px gold;
+}
+
+/* CARDS */
 .card {
   background: linear-gradient(180deg, #0f172a, #020617);
   margin: 12px;
@@ -23,19 +57,10 @@ body {
   transition: 0.3s;
 }
 
-/* TOP 3 */
 .rank1 {
   border: 2px solid gold;
   box-shadow: 0 0 30px gold;
   position: relative;
-}
-
-.rank1::before {
-  content: "👑";
-  position: absolute;
-  right: 10px;
-  top: -10px;
-  font-size: 22px;
 }
 
 .rank2 {
@@ -103,22 +128,59 @@ body {
 }
 .tier img { width: 20px; }
 .tier span { font-size: 10px; color: gold; }
+
 </style>
 </head>
 
 <body>
 
+<!--  MENU -->
+<div class="menu" id="menu"></div>
+
 <div id="app"></div>
 
 <script>
 
-// 🔥 NAME CONTROL (yaha se kisi ka bhi naam change kar)
+//  MENU DATA (categories + icons)
+const menuItems = [
+  {name:"Vanilla", icon:"https://cdn-icons-png.flaticon.com/512/1040/1040230.png"},
+  {name:"UHC", icon:"https://cdn-icons-png.flaticon.com/512/833/833472.png"},
+  {name:"Pot", icon:"https://cdn-icons-png.flaticon.com/512/3523/3523887.png"},
+  {name:"NethOP", icon:"https://cdn-icons-png.flaticon.com/512/616/616494.png"},
+  {name:"SMP", icon:"https://cdn-icons-png.flaticon.com/512/1828/1828919.png"},
+  {name:"Sword", icon:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png"},
+  {name:"Axe", icon:"https://cdn-icons-png.flaticon.com/512/3523/3523063.png"},
+  {name:"Mace", icon:"https://cdn-icons-png.flaticon.com/512/3523/3523033.png"},
+  {name:"TNT Cart", icon:"https://cdn-icons-png.flaticon.com/512/616/616408.png"}
+];
+
+const menu = document.getElementById("menu");
+
+// render menu
+menuItems.forEach((item, index) => {
+  const div = document.createElement("div");
+  div.className = "menu-item";
+  if(index === 0) div.classList.add("active");
+
+  div.innerHTML = `
+    <img src="${item.icon}">
+    <span>${item.name}</span>
+  `;
+
+  div.onclick = () => {
+    document.querySelectorAll(".menu-item").forEach(e => e.classList.remove("active"));
+    div.classList.add("active");
+  };
+
+  menu.appendChild(div);
+});
+
+
+//  NAME CONTROL
 let customNames = {
   1: "PS777GAMING",
   2: "DEATH SCAR",
-  3: "LORDMADARAAA",
-  10: "Rudra",   // example
-  25: "Ankit"    // example
+  3: "LORDMADARAAA"
 };
 
 const icons = [
@@ -134,9 +196,7 @@ for (let i = 1; i <= 100; i++) {
   players.push({
     name: customNames[i] || "Player" + i,
     rank: i,
-    avatar: i === 1
-      ? "https://mc-heads.net/avatar/WhiteLuffy"
-      : "https://mc-heads.net/avatar/" + (i % 2 === 0 ? "Steve" : "Alex"),
+    avatar: "https://mc-heads.net/avatar/" + (i % 2 === 0 ? "Steve" : "Alex"),
     tiers: [
       {icon: icons[Math.floor(Math.random()*icons.length)], text:"HT1"},
       {icon: icons[Math.floor(Math.random()*icons.length)], text:"LT1"},
@@ -147,7 +207,6 @@ for (let i = 1; i <= 100; i++) {
 
 const app = document.getElementById("app");
 
-// Render
 players.forEach((p) => {
   const card = document.createElement("div");
   card.className = "card";
@@ -178,7 +237,8 @@ players.forEach((p) => {
 
   app.appendChild(card);
 });
+
 </script>
 
 </body>
-</html>
+</html>>
