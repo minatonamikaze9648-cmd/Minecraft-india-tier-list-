@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Minecraft Ranking</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
 <style>
 body {
@@ -15,35 +15,39 @@ body {
   color: white;
 }
 
-/* Smooth scroll */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Card */
 .card {
   background: linear-gradient(180deg, #0f172a, #020617);
   margin: 12px;
   padding: 16px;
   border-radius: 18px;
-  box-shadow: 0 0 25px rgba(0,0,0,0.9);
-  animation: fadeUp 0.6s ease;
   transition: 0.3s;
 }
 
-/* Hover animation */
-.card:hover {
-  transform: translateY(-5px) scale(1.01);
-  box-shadow: 0 0 40px rgba(255,255,255,0.08);
-}
-
-/* Top player golden */
-.top {
+/* TOP 3 */
+.rank1 {
   border: 2px solid gold;
-  box-shadow: 0 0 25px gold;
+  box-shadow: 0 0 30px gold;
+  position: relative;
 }
 
-/* Player row */
+.rank1::before {
+  content: "👑";
+  position: absolute;
+  right: 10px;
+  top: -10px;
+  font-size: 22px;
+}
+
+.rank2 {
+  border: 2px solid silver;
+  box-shadow: 0 0 20px silver;
+}
+
+.rank3 {
+  border: 2px solid #cd7f32;
+  box-shadow: 0 0 20px #cd7f32;
+}
+
 .player {
   display: flex;
   justify-content: space-between;
@@ -55,7 +59,6 @@ html {
   gap: 10px;
 }
 
-/* Rank */
 .rank {
   background: linear-gradient(135deg, gold, orange);
   color: black;
@@ -64,18 +67,15 @@ html {
   font-weight: bold;
 }
 
-/* Avatar */
 .avatar {
   width: 50px;
   border-radius: 10px;
 }
 
-/* Name */
 .name {
-  font-weight: 600;
+  font-weight: 700;
 }
 
-/* Badge */
 .badge {
   background: #7f1d1d;
   padding: 5px 10px;
@@ -83,7 +83,6 @@ html {
   color: #f87171;
 }
 
-/* Tiers */
 .tiers {
   display: flex;
   gap: 10px;
@@ -91,7 +90,6 @@ html {
   margin-top: 12px;
 }
 
-/* Tier bubble */
 .tier {
   width: 48px;
   height: 48px;
@@ -102,30 +100,9 @@ html {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  animation: pop 0.4s ease;
 }
-
-/* Tier image */
-.tier img {
-  width: 20px;
-}
-
-/* Tier text */
-.tier span {
-  font-size: 10px;
-  color: gold;
-}
-
-/* Animations */
-@keyframes fadeUp {
-  from {opacity: 0; transform: translateY(20px);}
-  to {opacity: 1; transform: translateY(0);}
-}
-
-@keyframes pop {
-  from {transform: scale(0.8);}
-  to {transform: scale(1);}
-}
+.tier img { width: 20px; }
+.tier span { font-size: 10px; color: gold; }
 </style>
 </head>
 
@@ -134,6 +111,16 @@ html {
 <div id="app"></div>
 
 <script>
+
+// 🔥 NAME CONTROL (yaha se kisi ka bhi naam change kar)
+let customNames = {
+  1: "PS777GAMING",
+  2: "DEATH SCAR",
+  3: "LORDMADARAAA",
+  10: "Rudra",   // example
+  25: "Ankit"    // example
+};
+
 const icons = [
   "https://cdn-icons-png.flaticon.com/512/3523/3523887.png",
   "https://cdn-icons-png.flaticon.com/512/833/833472.png",
@@ -141,14 +128,15 @@ const icons = [
   "https://cdn-icons-png.flaticon.com/512/1040/1040230.png"
 ];
 
-// Fake DB
 let players = [];
 
 for (let i = 1; i <= 100; i++) {
   players.push({
-    name: "Player" + i,
+    name: customNames[i] || "Player" + i,
     rank: i,
-    avatar: "https://mc-heads.net/avatar/" + (i % 2 === 0 ? "Steve" : "Alex"),
+    avatar: i === 1
+      ? "https://mc-heads.net/avatar/WhiteLuffy"
+      : "https://mc-heads.net/avatar/" + (i % 2 === 0 ? "Steve" : "Alex"),
     tiers: [
       {icon: icons[Math.floor(Math.random()*icons.length)], text:"HT1"},
       {icon: icons[Math.floor(Math.random()*icons.length)], text:"LT1"},
@@ -160,11 +148,13 @@ for (let i = 1; i <= 100; i++) {
 const app = document.getElementById("app");
 
 // Render
-players.forEach((p, index) => {
+players.forEach((p) => {
   const card = document.createElement("div");
   card.className = "card";
 
-  if(index === 0) card.classList.add("top");
+  if(p.rank === 1) card.classList.add("rank1");
+  if(p.rank === 2) card.classList.add("rank2");
+  if(p.rank === 3) card.classList.add("rank3");
 
   card.innerHTML = `
     <div class="player">
