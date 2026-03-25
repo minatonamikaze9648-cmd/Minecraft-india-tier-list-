@@ -15,7 +15,38 @@ body {
   color: white;
 }
 
-/*  TOP MENU */
+/* 🔥 HEADER (LOGO + SEARCH) */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 800;
+  background: linear-gradient(90deg, gold, orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.search {
+  flex: 1;
+  margin-left: 10px;
+}
+
+.search input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: none;
+  outline: none;
+  background: #0f172a;
+  color: white;
+}
+
+/* 🔥 MENU */
 .menu {
   display: flex;
   overflow-x: auto;
@@ -35,12 +66,10 @@ body {
 
 .menu-item img {
   width: 28px;
-  margin-bottom: 5px;
 }
 
 .menu-item span {
   font-size: 12px;
-  color: #cbd5f5;
 }
 
 .menu-item.active {
@@ -54,24 +83,11 @@ body {
   margin: 12px;
   padding: 16px;
   border-radius: 18px;
-  transition: 0.3s;
 }
 
-.rank1 {
-  border: 2px solid gold;
-  box-shadow: 0 0 30px gold;
-  position: relative;
-}
-
-.rank2 {
-  border: 2px solid silver;
-  box-shadow: 0 0 20px silver;
-}
-
-.rank3 {
-  border: 2px solid #cd7f32;
-  box-shadow: 0 0 20px #cd7f32;
-}
+.rank1 { border: 2px solid gold; box-shadow: 0 0 30px gold; }
+.rank2 { border: 2px solid silver; }
+.rank3 { border: 2px solid #cd7f32; }
 
 .player {
   display: flex;
@@ -89,59 +105,59 @@ body {
   color: black;
   padding: 10px;
   border-radius: 10px;
-  font-weight: bold;
 }
 
-.avatar {
-  width: 50px;
-  border-radius: 10px;
-}
-
-.name {
-  font-weight: 700;
-}
+.avatar { width: 50px; border-radius: 10px; }
+.name { font-weight: 700; }
 
 .badge {
   background: #7f1d1d;
   padding: 5px 10px;
   border-radius: 10px;
-  color: #f87171;
 }
 
 .tiers {
   display: flex;
   gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 12px;
+  margin-top: 10px;
 }
 
 .tier {
-  width: 48px;
-  height: 48px;
+  width: 45px;
+  height: 45px;
   border-radius: 50%;
-  background: #000;
+  background: black;
   border: 2px solid gold;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
 }
-.tier img { width: 20px; }
-.tier span { font-size: 10px; color: gold; }
+
+.tier img { width: 18px; }
+.tier span { font-size: 10px; }
 
 </style>
 </head>
 
 <body>
 
-<!--  MENU -->
+<!-- 🔥 HEADER -->
+<div class="header">
+  <div class="logo">MCTIERS</div>
+  <div class="search">
+    <input type="text" id="searchInput" placeholder="Search player...">
+  </div>
+</div>
+
+<!-- 🔥 MENU -->
 <div class="menu" id="menu"></div>
 
 <div id="app"></div>
 
 <script>
 
-//  MENU DATA (categories + icons)
+// 🔥 MENU
 const menuItems = [
   {name:"Vanilla", icon:"https://cdn-icons-png.flaticon.com/512/1040/1040230.png"},
   {name:"UHC", icon:"https://cdn-icons-png.flaticon.com/512/833/833472.png"},
@@ -156,27 +172,16 @@ const menuItems = [
 
 const menu = document.getElementById("menu");
 
-// render menu
 menuItems.forEach((item, index) => {
   const div = document.createElement("div");
   div.className = "menu-item";
   if(index === 0) div.classList.add("active");
 
-  div.innerHTML = `
-    <img src="${item.icon}">
-    <span>${item.name}</span>
-  `;
-
-  div.onclick = () => {
-    document.querySelectorAll(".menu-item").forEach(e => e.classList.remove("active"));
-    div.classList.add("active");
-  };
-
+  div.innerHTML = `<img src="${item.icon}"><span>${item.name}</span>`;
   menu.appendChild(div);
 });
 
-
-//  NAME CONTROL
+// 🔥 NAMES
 let customNames = {
   1: "PS777GAMING",
   2: "DEATH SCAR",
@@ -185,9 +190,7 @@ let customNames = {
 
 const icons = [
   "https://cdn-icons-png.flaticon.com/512/3523/3523887.png",
-  "https://cdn-icons-png.flaticon.com/512/833/833472.png",
-  "https://cdn-icons-png.flaticon.com/512/616/616494.png",
-  "https://cdn-icons-png.flaticon.com/512/1040/1040230.png"
+  "https://cdn-icons-png.flaticon.com/512/833/833472.png"
 ];
 
 let players = [];
@@ -198,47 +201,61 @@ for (let i = 1; i <= 100; i++) {
     rank: i,
     avatar: "https://mc-heads.net/avatar/" + (i % 2 === 0 ? "Steve" : "Alex"),
     tiers: [
-      {icon: icons[Math.floor(Math.random()*icons.length)], text:"HT1"},
-      {icon: icons[Math.floor(Math.random()*icons.length)], text:"LT1"},
-      {icon: icons[Math.floor(Math.random()*icons.length)], text:"HT1"}
+      {icon: icons[0], text:"HT1"},
+      {icon: icons[1], text:"LT1"}
     ]
   });
 }
 
 const app = document.getElementById("app");
 
-players.forEach((p) => {
-  const card = document.createElement("div");
-  card.className = "card";
+// 🔥 RENDER FUNCTION
+function render(list) {
+  app.innerHTML = "";
+  
+  list.forEach((p) => {
+    const card = document.createElement("div");
+    card.className = "card";
 
-  if(p.rank === 1) card.classList.add("rank1");
-  if(p.rank === 2) card.classList.add("rank2");
-  if(p.rank === 3) card.classList.add("rank3");
+    if(p.rank === 1) card.classList.add("rank1");
+    if(p.rank === 2) card.classList.add("rank2");
+    if(p.rank === 3) card.classList.add("rank3");
 
-  card.innerHTML = `
-    <div class="player">
-      <div class="left">
-        <div class="rank">${p.rank}</div>
-        <img class="avatar" src="${p.avatar}">
-        <div class="name">${p.name}</div>
-      </div>
-      <div class="badge">NA</div>
-    </div>
-
-    <div class="tiers">
-      ${p.tiers.map(t => `
-        <div class="tier">
-          <img src="${t.icon}">
-          <span>${t.text}</span>
+    card.innerHTML = `
+      <div class="player">
+        <div class="left">
+          <div class="rank">${p.rank}</div>
+          <img class="avatar" src="${p.avatar}">
+          <div class="name">${p.name}</div>
         </div>
-      `).join("")}
-    </div>
-  `;
+        <div class="badge">NA</div>
+      </div>
 
-  app.appendChild(card);
+      <div class="tiers">
+        ${p.tiers.map(t => `
+          <div class="tier">
+            <img src="${t.icon}">
+            <span>${t.text}</span>
+          </div>
+        `).join("")}
+      </div>
+    `;
+
+    app.appendChild(card);
+  });
+}
+
+// 🔥 SEARCH FILTER
+document.getElementById("searchInput").addEventListener("input", (e) => {
+  const value = e.target.value.toLowerCase();
+  const filtered = players.filter(p => p.name.toLowerCase().includes(value));
+  render(filtered);
 });
+
+// first render
+render(players);
 
 </script>
 
 </body>
-</html>>
+</html>
