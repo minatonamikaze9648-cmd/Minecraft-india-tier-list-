@@ -189,9 +189,12 @@ for (let i = 1; i <= 100; i++) {
     name: customNames[i] || "Player" + i,
     rank: i,
 
-    //  SKIN NOW ON RANK 1
-    avatar: i === 1 
-      ? "https://mc-heads.net/head/519698a6aa86f01c9c5521982cc6aba9ff6522147a6cc19fddfa814bae531787/100"
+    // 🔥 CUSTOM SKINS
+    avatar:
+      i === 1
+        ? "https://mc-heads.net/head/519698a6aa86f01c9c5521982cc6aba9ff6522147a6cc19fddfa814bae531787/100"
+      : i === 3
+        ? "https://mc-heads.net/head/715bb926111a2b016a72c89436cee51c187bca83575101378e2fea0b66a1a724/100"
       : "https://mc-heads.net/avatar/" + (i % 2 === 0 ? "Steve" : "Alex"),
 
     tiers: [
@@ -249,4 +252,3 @@ render(players);
 </script>
 
 </body>
-</html>
