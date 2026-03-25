@@ -1,4 +1,4 @@
-```html
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +16,7 @@ body {
   color: white;
 }
 
-/*  HEADER */
+/* 🔥 HEADER */
 .header {
   display: flex;
   align-items: center;
@@ -47,7 +47,7 @@ body {
   color: white;
 }
 
-/*  MENU */
+/* 🔥 MENU */
 .menu {
   display: flex;
   overflow-x: auto;
@@ -86,9 +86,24 @@ body {
   border-radius: 18px;
 }
 
-.rank1 { border: 2px solid gold; box-shadow: 0 0 30px gold; }
-.rank2 { border: 2px solid silver; }
-.rank3 { border: 2px solid #cd7f32; }
+/* 🔥 TOP 3 PROFILE UPGRADE */
+.rank1 {
+  border: 2px solid gold;
+  box-shadow: 0 0 30px gold;
+  background: linear-gradient(135deg, rgba(255,215,0,0.15), rgba(255,140,0,0.08));
+}
+
+.rank2 {
+  border: 2px solid silver;
+  box-shadow: 0 0 20px rgba(192,192,192,0.6);
+  background: linear-gradient(135deg, rgba(192,192,192,0.15), rgba(120,120,120,0.08));
+}
+
+.rank3 {
+  border: 2px solid #cd7f32;
+  box-shadow: 0 0 20px rgba(205,127,50,0.6);
+  background: linear-gradient(135deg, rgba(205,127,50,0.15), rgba(139,69,19,0.08));
+}
 
 .player {
   display: flex;
@@ -108,8 +123,38 @@ body {
   border-radius: 10px;
 }
 
+/* 🔥 RANK BADGE COLOR */
+.rank1 .rank {
+  background: linear-gradient(135deg, gold, orange);
+}
+
+.rank2 .rank {
+  background: linear-gradient(135deg, #c0c0c0, #808080);
+}
+
+.rank3 .rank {
+  background: linear-gradient(135deg, #cd7f32, #8b4513);
+}
+
 .avatar { width: 50px; border-radius: 10px; }
+
 .name { font-weight: 700; }
+
+/* 🔥 NAME COLOR */
+.rank1 .name {
+  color: gold;
+  text-shadow: 0 0 10px gold;
+}
+
+.rank2 .name {
+  color: silver;
+  text-shadow: 0 0 8px silver;
+}
+
+.rank3 .name {
+  color: #cd7f32;
+  text-shadow: 0 0 8px #cd7f32;
+}
 
 .badge {
   background: #7f1d1d;
@@ -155,7 +200,7 @@ body {
 
 <script>
 
-//  MENU
+// 🔥 MENU
 const menuItems = [
   {name:"Vanilla", icon:"https://cdn-icons-png.flaticon.com/512/1040/1040230.png"},
   {name:"UHC", icon:"https://cdn-icons-png.flaticon.com/512/833/833472.png"},
@@ -177,7 +222,6 @@ menuItems.forEach((item, index) => {
 
   div.innerHTML = `<img src="${item.icon}"><span>${item.name}</span>`;
 
-  //  MENU CLICK FIX
   div.addEventListener("click", () => {
     document.querySelectorAll(".menu-item").forEach(el => el.classList.remove("active"));
     div.classList.add("active");
@@ -186,7 +230,7 @@ menuItems.forEach((item, index) => {
   menu.appendChild(div);
 });
 
-//  NAMES
+// 🔥 NAMES
 let customNames = {
   1: "PS777GAMING",
   2: "DEATH SCAR",
@@ -214,7 +258,7 @@ for (let i = 1; i <= 100; i++) {
 
 const app = document.getElementById("app");
 
-//  RENDER FUNCTION
+// 🔥 RENDER FUNCTION
 function render(list) {
   app.innerHTML = "";
   
@@ -250,7 +294,7 @@ function render(list) {
   });
 }
 
-//  SEARCH FIX
+// 🔥 SEARCH FIX
 document.getElementById("searchInput").addEventListener("input", (e) => {
   const value = e.target.value.toLowerCase();
   const filtered = players.filter(p => p.name.toLowerCase().includes(value));
@@ -264,4 +308,3 @@ render(players);
 
 </body>
 </html>
-```
