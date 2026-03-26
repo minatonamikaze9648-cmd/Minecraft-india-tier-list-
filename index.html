@@ -3,138 +3,78 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Minecraft Ranking</title>
+<title>TierZone</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
 
 <style>
-body {
-  margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: linear-gradient(180deg, #020617, #000);
-  color: white;
-}
+/* SAME CSS (NO CHANGE) */
+body { margin:0; font-family:'Poppins',sans-serif; background:linear-gradient(180deg,#020617,#000); color:white; }
 
-.header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 12px;
-}
+.header { display:flex; align-items:center; justify-content:space-between; padding:12px; }
 
 .logo {
-  font-size: 22px;
-  font-weight: 800;
-  background: linear-gradient(90deg, gold, orange);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size:22px;
+  font-weight:800;
+  background:linear-gradient(90deg,gold,orange);
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
 }
 
-.search {
-  flex: 1;
-  margin-left: 10px;
-}
+.search { flex:1; margin-left:10px; }
 
 .search input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 20px;
-  border: none;
-  outline: none;
-  background: #0f172a;
-  color: white;
+  width:100%; padding:10px; border-radius:20px;
+  border:none; outline:none; background:#0f172a; color:white;
 }
 
-.menu {
-  display: flex;
-  overflow-x: auto;
-  gap: 10px;
-  padding: 12px;
-}
+.menu { display:flex; overflow-x:auto; gap:10px; padding:12px; }
 
 .menu-item {
-  min-width: 90px;
-  text-align: center;
-  background: #0f172a;
-  border-radius: 12px;
-  padding: 10px;
-  transition: 0.3s;
-  border: 2px solid transparent;
+  min-width:90px; text-align:center; background:#0f172a;
+  border-radius:12px; padding:10px; border:2px solid transparent;
 }
 
-.menu-item img { width: 28px; }
-.menu-item span { font-size: 12px; }
+.menu-item img { width:28px; }
+.menu-item span { font-size:12px; }
 
-.menu-item.active {
-  border: 2px solid gold;
-  box-shadow: 0 0 10px gold;
-}
+.menu-item.active { border:2px solid gold; box-shadow:0 0 10px gold; }
 
-.card {
-  background: linear-gradient(180deg, #0f172a, #020617);
-  margin: 12px;
-  padding: 16px;
-  border-radius: 18px;
-}
+.card { background:linear-gradient(180deg,#0f172a,#020617); margin:12px; padding:16px; border-radius:18px; }
 
-.rank1 { border: 2px solid gold; box-shadow: 0 0 30px gold; }
-.rank2 { border: 2px solid silver; box-shadow: 0 0 20px silver; }
-.rank3 { border: 2px solid #cd7f32; box-shadow: 0 0 20px #cd7f32; }
+.rank1 { border:2px solid gold; box-shadow:0 0 30px gold; }
+.rank2 { border:2px solid silver; box-shadow:0 0 20px silver; }
+.rank3 { border:2px solid #cd7f32; box-shadow:0 0 20px #cd7f32; }
 
-.player {
-  display: flex;
-  justify-content: space-between;
-}
+.player { display:flex; justify-content:space-between; }
 
-.left {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
+.left { display:flex; align-items:center; gap:10px; }
 
-.rank {
-  background: linear-gradient(135deg, gold, orange);
-  color: black;
-  padding: 10px;
-  border-radius: 10px;
-}
+.rank { background:linear-gradient(135deg,gold,orange); color:black; padding:10px; border-radius:10px; }
 
-.avatar { width: 50px; border-radius: 10px; }
-.name { font-weight: 700; }
+.avatar { width:50px; border-radius:10px; }
+.name { font-weight:700; }
 
-.badge {
-  background: #7f1d1d;
-  padding: 5px 10px;
-  border-radius: 10px;
-}
+.badge { background:#7f1d1d; padding:5px 10px; border-radius:10px; }
 
-.tiers {
-  display: flex;
-  gap: 10px;
-  margin-top: 10px;
-}
+.tiers { display:flex; gap:10px; margin-top:10px; flex-wrap:wrap; }
 
 .tier {
-  width: 45px;
-  height: 45px;
-  border-radius: 50%;
-  background: black;
-  border: 2px solid gold;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  width:45px; height:45px; border-radius:50%;
+  background:black; border:2px solid gold;
+  display:flex; flex-direction:column;
+  align-items:center; justify-content:center;
 }
 
-.tier img { width: 18px; }
-.tier span { font-size: 10px; }
+.tier img { width:18px; }
+.tier span { font-size:9px; }
 </style>
 </head>
 
 <body>
 
 <div class="header">
-  <div class="logo">MCTIERS</div>
+  <div class="logo">TIERZONE</div>
   <div class="search">
     <input type="text" id="searchInput" placeholder="Search player...">
   </div>
@@ -145,7 +85,7 @@ body {
 
 <script>
 
-// MENU
+// MENU SAME
 const menuItems = [
   {name:"Vanilla", icon:"https://cdn-icons-png.flaticon.com/512/1040/1040230.png"},
   {name:"UHC", icon:"https://cdn-icons-png.flaticon.com/512/833/833472.png"},
@@ -175,7 +115,7 @@ menuItems.forEach((item, index) => {
   menu.appendChild(div);
 });
 
-// NAMES
+// NAMES SAME
 let customNames = {
   1: "PS777GAMING",
   2: "DEATH SCAR",
@@ -189,7 +129,6 @@ for (let i = 1; i <= 100; i++) {
     name: customNames[i] || "Player" + i,
     rank: i,
 
-    // 🔥 CUSTOM SKINS
     avatar:
       i === 1
         ? "https://mc-heads.net/head/519698a6aa86f01c9c5521982cc6aba9ff6522147a6cc19fddfa814bae531787/100"
@@ -197,9 +136,16 @@ for (let i = 1; i <= 100; i++) {
         ? "https://mc-heads.net/head/715bb926111a2b016a72c89436cee51c187bca83575101378e2fea0b66a1a724/100"
       : "https://mc-heads.net/avatar/" + (i % 2 === 0 ? "Steve" : "Alex"),
 
+    //  ALL GAME MODES TIERS
     tiers: [
-      {icon:"https://cdn-icons-png.flaticon.com/512/3523/3523887.png", text:"HT1"},
-      {icon:"https://cdn-icons-png.flaticon.com/512/833/833472.png", text:"LT1"}
+      {icon:"https://cdn-icons-png.flaticon.com/512/1040/1040230.png", text:"Van"},
+      {icon:"https://cdn-icons-png.flaticon.com/512/833/833472.png", text:"UHC"},
+      {icon:"https://cdn-icons-png.flaticon.com/512/3523/3523887.png", text:"Pot"},
+      {icon:"https://cdn-icons-png.flaticon.com/512/616/616494.png", text:"Net"},
+      {icon:"https://cdn-icons-png.flaticon.com/512/1828/1828919.png", text:"SMP"},
+      {icon:"https://cdn-icons-png.flaticon.com/512/3075/3075977.png", text:"Sw"},
+      {icon:"https://cdn-icons-png.flaticon.com/512/3523/3523063.png", text:"Axe"},
+      {icon:"https://cdn-icons-png.flaticon.com/512/3523/3523033.png", text:"Mace"}
     ]
   });
 }
@@ -241,7 +187,6 @@ function render(list) {
   });
 }
 
-// SEARCH
 document.getElementById("searchInput").addEventListener("input", (e) => {
   const value = e.target.value.toLowerCase();
   render(players.filter(p => p.name.toLowerCase().includes(value)));
